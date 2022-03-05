@@ -517,4 +517,5 @@ Status FlowUnitGroup::Close() {
 
 Status FlowUnitGroup::Destory() { return STATUS_OK; }
 
+uint32_t FlowUnitGroup::GetBatchSize() { return batch_size_; }
 }  // namespace modelbox

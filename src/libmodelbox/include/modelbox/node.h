@@ -441,6 +441,14 @@ class Node : public DataMatcherNode {
 
   std::shared_ptr<Profiler> GetProfiler() { return profiler_; };
 
+  uint32_t GetBatchSize() { return flowunit_group_->GetBatchSize(); };
+  
+  void SetMatchNode(std::shared_ptr<Node> match_node) {
+      match_node_ = match_node;
+  }
+
+  std::shared_ptr<Node> GetMatchNode() { return match_node_; }
+
  private:
   friend class InPort;
   friend class SingleNode;
@@ -486,6 +494,8 @@ class Node : public DataMatcherNode {
   bool is_stream_same_count_;
 
   bool is_input_contiguous_{true};
+  
+  std::shared_ptr<Node> match_node_{nullptr};
 
   int GetRecvLimit();
 
